@@ -70,16 +70,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nq0-mo-6On">
+                                <rect key="frame" x="40" y="328" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="GZD-Gb-sXI"/>
+                                    <constraint firstAttribute="width" constant="100" id="J5S-pS-cyM"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="j2c-cU-mTn" firstAttribute="top" secondItem="HjJ-o0-gja" secondAttribute="bottom" constant="40" id="45r-1E-wKd"/>
                             <constraint firstItem="TMq-D5-44E" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="50H-vQ-wHB"/>
+                            <constraint firstItem="nq0-mo-6On" firstAttribute="top" secondItem="8Xx-HZ-G8s" secondAttribute="bottom" constant="40" id="9EJ-FV-eAM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HjJ-o0-gja" secondAttribute="trailing" constant="40" id="Ani-Tj-2Qb"/>
                             <constraint firstItem="JA1-cD-UuS" firstAttribute="top" secondItem="4GC-aH-3pZ" secondAttribute="bottom" constant="40" id="CEg-li-Tkb"/>
                             <constraint firstItem="TMq-D5-44E" firstAttribute="top" secondItem="HPe-M2-uum" secondAttribute="bottom" constant="40" id="FUW-c7-Rqh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JA1-cD-UuS" secondAttribute="trailing" constant="40" id="Gbb-dr-bOl"/>
+                            <constraint firstItem="nq0-mo-6On" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="HVu-0b-8UI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="j2c-cU-mTn" secondAttribute="trailing" constant="40" id="IjA-O4-Yhz"/>
                             <constraint firstItem="k3f-zU-Y5C" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Jld-7N-C8l"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4GC-aH-3pZ" secondAttribute="trailing" constant="40" id="Jlq-2i-bu5"/>
@@ -100,6 +109,7 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="k3f-zU-Y5C" id="kHk-fd-zhW"/>
+                        <outlet property="companyLogoImage" destination="nq0-mo-6On" id="KK5-BO-SAk"/>
                         <outlet property="companyNameLabel" destination="HjJ-o0-gja" id="5uR-XS-Zrl"/>
                         <outlet property="companyPickerView" destination="c3C-Ru-jOK" id="XX4-99-o9A"/>
                         <outlet property="companySymbolLabel" destination="j2c-cU-mTn" id="NYF-pl-kfJ"/>
