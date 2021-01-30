@@ -17,8 +17,6 @@
 		D0FC890325C5AFBC00570C89 /* StocksData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FC890225C5AFBC00570C89 /* StocksData.swift */; };
 		D0FC890625C5BB2500570C89 /* StocksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FC890525C5BB2500570C89 /* StocksModel.swift */; };
 		D0FC890925C5DCF900570C89 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FC890825C5DCF900570C89 /* ImageModel.swift */; };
-		D0FC890C25C5DD3000570C89 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FC890B25C5DD3000570C89 /* ImageData.swift */; };
-		D0FC891025C5E55D00570C89 /* ListOfCompaniesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FC890F25C5E55D00570C89 /* ListOfCompaniesData.swift */; };
 		D0FC891325C5E56E00570C89 /* ListOfCompaniesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FC891225C5E56E00570C89 /* ListOfCompaniesModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,8 +33,6 @@
 		D0FC890225C5AFBC00570C89 /* StocksData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksData.swift; sourceTree = "<group>"; };
 		D0FC890525C5BB2500570C89 /* StocksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksModel.swift; sourceTree = "<group>"; };
 		D0FC890825C5DCF900570C89 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
-		D0FC890B25C5DD3000570C89 /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
-		D0FC890F25C5E55D00570C89 /* ListOfCompaniesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfCompaniesData.swift; sourceTree = "<group>"; };
 		D0FC891225C5E56E00570C89 /* ListOfCompaniesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfCompaniesModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,7 +133,6 @@
 		D0FC891725C5E58100570C89 /* Image */ = {
 			isa = PBXGroup;
 			children = (
-				D0FC890B25C5DD3000570C89 /* ImageData.swift */,
 				D0FC890825C5DCF900570C89 /* ImageModel.swift */,
 			);
 			path = Image;
@@ -146,7 +141,6 @@
 		D0FC891825C5E59000570C89 /* ListOfCompanies */ = {
 			isa = PBXGroup;
 			children = (
-				D0FC890F25C5E55D00570C89 /* ListOfCompaniesData.swift */,
 				D0FC891225C5E56E00570C89 /* ListOfCompaniesModel.swift */,
 			);
 			path = ListOfCompanies;
@@ -229,9 +223,7 @@
 				D086470325C4BB670098ACC6 /* AppDelegate.swift in Sources */,
 				D0FC890625C5BB2500570C89 /* StocksModel.swift in Sources */,
 				D086470525C4BB670098ACC6 /* SceneDelegate.swift in Sources */,
-				D0FC891025C5E55D00570C89 /* ListOfCompaniesData.swift in Sources */,
 				D0FC890925C5DCF900570C89 /* ImageModel.swift in Sources */,
-				D0FC890C25C5DD3000570C89 /* ImageData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

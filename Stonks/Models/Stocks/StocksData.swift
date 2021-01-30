@@ -8,10 +8,8 @@
 import Foundation
 
 struct StocksData: Decodable {
-    
-        let symbol: String
-        let companyName: String
-        let latestPrice: Double
-        let change: Double
-    
+    let symbol: String
+    let companyName: String
+    let latestPrice: Double
+    let change: Double
 }

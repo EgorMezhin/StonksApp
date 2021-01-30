@@ -7,17 +7,17 @@
 
 import Foundation
 
-struct ListOfCompaniesModel: Codable {
+struct ListOfCompaniesModel: Decodable {
     let array: [Company]
     
     init(from decoder: Decoder) throws {
-            let container = try decoder.singleValueContainer()
-            let companies = try container.decode([Company].self)
-            array = companies
-        }
+        let container = try decoder.singleValueContainer()
+        let companies = try container.decode([Company].self)
+        array = companies
+    }
 }
 
-struct Company: Codable {
+struct Company: Decodable {
     let companyName: String
     let symbol: String
 }
