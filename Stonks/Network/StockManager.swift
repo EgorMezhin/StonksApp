@@ -12,17 +12,20 @@ protocol StocksManagerDelegate {
     func didUpdateCompanies(companies: ListOfCompaniesModel)
     func didUpdateImage(image: ImageModel)
     func didUpdateChart(chart: ChartModel)
+    func networkError(error: String, message: String)
 }
 
 struct StockManager {
     var delegate: StocksManagerDelegate?
-    let token = "pk_9126de53050040c1b737ead7a0720727"
+    let token = "pk_fd420fdd69894f3aa18b7016cb21dcdc"
     let urlGeneral = "https://cloud.iexapis.com/stable/stock/"
+    
+    //MARK: - Quote
     
     func requestQuote(for symbol: String) {
         guard let url = URL(string: "\(urlGeneral)\(symbol)/quote?token=\(token)")
         else {
-            return print("Can't assign StocksURL to a constant")
+            fatalError("Can't assign StocksURL to a constant")
         }
         let dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let data = data,
@@ -31,8 +34,12 @@ struct StockManager {
                 if let stocks = self.parseQuote(from: data) {
                     self.delegate?.didUpdateStocks(stocks: stocks)
                 }
+            } else if (response as? HTTPURLResponse)?.statusCode ?? 0 >= 400 && (response as? HTTPURLResponse)?.statusCode ?? 0 <= 500 {
+                self.delegate?.networkError(error: "Something broke in the network layer",
+                                            message: "Please use the app later")
             } else {
-                print("Network error. Problem with url")
+                self.delegate?.networkError(error: "Loading information from server error",
+                                            message: "Please check your internet connection")
             }
         }
         dataTask.resume()
@@ -54,11 +61,12 @@ struct StockManager {
         }
     }
     
+    //MARK: - Image
     
     func requestImage(for symbol: String) {
         guard let urlImage = URL(string: "\(urlGeneral)\(symbol)/logo?token=\(token)")
         else {
-            return print("Can't assign ImageURL to a constant")
+            fatalError("Can't assign ImageURL to a constant")
         }
         let dataTask = URLSession.shared.dataTask(with: urlImage) { (data, response, error) in
             if let data = data,
@@ -67,8 +75,12 @@ struct StockManager {
                 if let imageModel = self.parseQuoteForImage(from: data) {
                     self.delegate?.didUpdateImage(image: imageModel)
                 }
+            } else if (response as? HTTPURLResponse)?.statusCode ?? 0 >= 400 && (response as? HTTPURLResponse)?.statusCode ?? 0 <= 500 {
+                self.delegate?.networkError(error: "Something broke in the network layer",
+                                            message: "Please use the app later")
             } else {
-                print("Network error. Problem with url")
+                self.delegate?.networkError(error: "Image loading error",
+                                            message: "Please check your internet connection")
             }
         }
         dataTask.resume()
@@ -85,10 +97,12 @@ struct StockManager {
         }
     }
     
+    //MARK: - ListOfCompanies
+    
     func requestListOfCompanies() {
         guard let urlListOfCompanies = URL(string: "\(urlGeneral)market/list/mostactive/?token=\(token)")
         else {
-            return print("Can't assign CompaniesListURL to a constant")
+            fatalError("Can't assign CompaniesListURL to a constant")
         }
         let dataTask = URLSession.shared.dataTask(with: urlListOfCompanies) { (data, response, error) in
             if let data = data,
@@ -97,8 +111,12 @@ struct StockManager {
                 if let companies = self.parseQuoteListOfCompanies(from: data) {
                     self.delegate?.didUpdateCompanies(companies: companies)
                 }
+            } else if (response as? HTTPURLResponse)?.statusCode ?? 0 >= 400 && (response as? HTTPURLResponse)?.statusCode ?? 0 <= 500 {
+                self.delegate?.networkError(error: "Something broke in the network layer",
+                                            message: "Please use the app later")
             } else {
-                print("Network error. Problem with url")
+                self.delegate?.networkError(error: "Loading information from server error",
+                                            message: "Please check your internet connection")
             }
         }
         dataTask.resume()
@@ -115,11 +133,12 @@ struct StockManager {
         }
     }
     
+    //MARK: - Chart
     
     func requestChart(for symbol: String) {
         guard let urlChart = URL(string: "\(urlGeneral)\(symbol)/chart/1m?token=\(token)")
         else {
-            return print("Can't assign ChartURL to a constant")
+            fatalError("Can't assign ChartURL to a constant")
         }
         let dataTask = URLSession.shared.dataTask(with: urlChart) { (data, response, error) in
             if let data = data,
@@ -128,8 +147,12 @@ struct StockManager {
                 if let chart = self.parseChart(from: data) {
                     self.delegate?.didUpdateChart(chart: chart)
                 }
+            } else if (response as? HTTPURLResponse)?.statusCode ?? 0 >= 400 && (response as? HTTPURLResponse)?.statusCode ?? 0 <= 500 {
+                self.delegate?.networkError(error: "Something broke in the network layer",
+                                            message: "Please use the app later")
             } else {
-                print("Network error. Problem with url")
+                self.delegate?.networkError(error: "Chart loading error",
+                                            message: "Please check your internet connection")
             }
         }
         dataTask.resume()
@@ -146,9 +169,4 @@ struct StockManager {
             return nil
         }
     }
-    
-    
-    
-    
-    
 }
