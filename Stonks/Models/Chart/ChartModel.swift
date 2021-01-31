@@ -22,7 +22,3 @@ struct StockValue: Decodable {
     let symbol: String
     let label: String
 }
-
-
-
-

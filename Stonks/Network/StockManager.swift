@@ -21,7 +21,6 @@ struct StockManager {
     let urlGeneral = "https://cloud.iexapis.com/stable/stock/"
     
     //MARK: - Quote
-    
     func requestQuote(for symbol: String) {
         guard let url = URL(string: "\(urlGeneral)\(symbol)/quote?token=\(token)")
         else {
@@ -62,7 +61,6 @@ struct StockManager {
     }
     
     //MARK: - Image
-    
     func requestImage(for symbol: String) {
         guard let urlImage = URL(string: "\(urlGeneral)\(symbol)/logo?token=\(token)")
         else {
@@ -98,7 +96,6 @@ struct StockManager {
     }
     
     //MARK: - ListOfCompanies
-    
     func requestListOfCompanies() {
         guard let urlListOfCompanies = URL(string: "\(urlGeneral)market/list/mostactive/?token=\(token)")
         else {
@@ -134,7 +131,6 @@ struct StockManager {
     }
     
     //MARK: - Chart
-    
     func requestChart(for symbol: String) {
         guard let urlChart = URL(string: "\(urlGeneral)\(symbol)/chart/1m?token=\(token)")
         else {
