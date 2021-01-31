@@ -39,8 +39,8 @@
                                     <constraint firstAttribute="width" constant="100" id="Hgp-nR-uY2"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="dC7-hn-EVM">
-                                <rect key="frame" x="43" y="277" width="328.5" height="70"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="56" translatesAutoresizingMaskIntoConstraints="NO" id="dC7-hn-EVM">
+                                <rect key="frame" x="47" y="277" width="320.5" height="70"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="bCd-AE-PYe">
                                         <rect key="frame" x="0.0" y="0.0" width="69.5" height="70"/>
@@ -60,7 +60,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="eSu-ab-24Z">
-                                        <rect key="frame" x="129.5" y="0.0" width="69.5" height="70"/>
+                                        <rect key="frame" x="125.5" y="0.0" width="69.5" height="70"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VALUE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pY2-6t-TfH">
                                                 <rect key="frame" x="0.0" y="0.0" width="69.5" height="20.5"/>
@@ -77,7 +77,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="pPU-Jl-e59">
-                                        <rect key="frame" x="259" y="0.0" width="69.5" height="70"/>
+                                        <rect key="frame" x="251" y="0.0" width="69.5" height="70"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHANGE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Xx-HZ-G8s">
                                                 <rect key="frame" x="0.0" y="0.0" width="69.5" height="20.5"/>
@@ -105,14 +105,12 @@
                                 <rect key="frame" x="20" y="242" width="374" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="8Vw-a4-W5J"/>
-                                    <constraint firstAttribute="width" constant="374" id="l0D-Bf-kcK"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="6Oy-h9-xvA">
                                 <rect key="frame" x="20" y="367" width="374" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="HDs-Fc-Szj"/>
-                                    <constraint firstAttribute="width" constant="374" id="x3c-B0-6ch"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -122,11 +120,13 @@
                             <constraint firstItem="nq0-mo-6On" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="0ab-Sg-Zw2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="HjJ-o0-gja" secondAttribute="trailing" symbolic="YES" id="9kq-Y2-pqE"/>
                             <constraint firstItem="k3f-zU-Y5C" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Jld-7N-C8l"/>
+                            <constraint firstAttribute="trailing" secondItem="clB-VW-88s" secondAttribute="trailing" constant="20" id="N8n-yb-MSm"/>
                             <constraint firstItem="c3C-Ru-jOK" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="PMV-DD-zVg"/>
                             <constraint firstItem="6Oy-h9-xvA" firstAttribute="top" secondItem="dC7-hn-EVM" secondAttribute="bottom" constant="20" id="SOY-7e-SSf"/>
                             <constraint firstItem="clB-VW-88s" firstAttribute="top" secondItem="HjJ-o0-gja" secondAttribute="bottom" constant="8" id="TOw-gR-edj"/>
                             <constraint firstItem="clB-VW-88s" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="abo-iH-NyJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="c3C-Ru-jOK" secondAttribute="bottom" id="byD-R3-Tdj"/>
+                            <constraint firstAttribute="trailing" secondItem="6Oy-h9-xvA" secondAttribute="trailing" constant="20" id="hRc-fJ-fgg"/>
                             <constraint firstItem="6Oy-h9-xvA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="k1d-1Y-rmd"/>
                             <constraint firstItem="nq0-mo-6On" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="kVW-vd-xFD"/>
                             <constraint firstItem="c3C-Ru-jOK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lKR-BN-Ak7"/>

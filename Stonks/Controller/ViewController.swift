@@ -26,13 +26,14 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         stockManager.delegate = self
         stockManager.requestListOfCompanies()
         
         companyPickerView.dataSource = self
         companyPickerView.delegate = self
         activityIndicator.hidesWhenStopped = true
+        //companyPickerView.c = true
         requestQuoteUpdate()
     }
     
@@ -79,6 +80,25 @@ extension ViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         requestQuoteUpdate(with: row)
     }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var label:UILabel
+        if let view = view as? UILabel{
+            label = view
+        } else {
+            label = UILabel()
+        }
+        label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.text = listOfCompanies?.array[row].companyName
+        
+        return label
+    }
+//    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+//        guard let titleData = listOfCompanies?.array[row].companyName else { return nil }
+//        let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedString.Key.font:UIFont(name: "Georgia", size: 20.0)!,NSAttributedString.Key.foregroundColor:UIColor.blue])
+//        return myTitle
+//    }
 }
 
 //MARK: - StocksManagerDelegate
