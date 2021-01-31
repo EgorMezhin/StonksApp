@@ -6,11 +6,15 @@
 //
 
 import UIKit
+import Charts
 
 class ViewController: UIViewController {
     
+    var stocksChart = LineChartView()
     var stockManager = StockManager()
     var listOfCompanies: ListOfCompaniesModel?
+   // var chartModel: ChartModel?
+    
     
     //MARK: - UI
     
@@ -21,6 +25,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var priceChangeLabel: UILabel!
     @IBOutlet weak var companyLogoImage: UIImageView!
+    @IBOutlet weak var lineChartView: LineChartView!
+    
     
     //MARK: - Lifecycle
     
@@ -29,13 +35,52 @@ class ViewController: UIViewController {
     
         stockManager.delegate = self
         stockManager.requestListOfCompanies()
-        
+        //setChartValues(count: 5)
         companyPickerView.dataSource = self
         companyPickerView.delegate = self
         activityIndicator.hidesWhenStopped = true
-        //companyPickerView.c = true
         requestQuoteUpdate()
     }
+    
+    //MARK: - Chart
+    
+    func setChartValues(count: Int) {
+        
+        let values = (0..<count).map { (i) -> ChartDataEntry in
+            let val = Double(arc4random_uniform(UInt32(count)) + 3)
+            return ChartDataEntry(x: Double(i), y: val)
+        }
+        
+        let set1 = LineChartDataSet(entries: values, label: nil)
+        let data = LineChartData(dataSet: set1)
+        
+        self.lineChartView.data = data
+        
+    }
+    
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//
+//
+//        stocksChart.frame = CGRect(x: 0,
+//                                   y: 0,
+//                                   width: self.chartView.frame.size.width,
+//                                   height: self.chartView.frame.size.height)
+//        stocksChart.center = chartView.center
+//        view.addSubview(stocksChart)
+//
+//        var entries = [ChartDataEntry]()
+//
+//        for x in 0..<10 {
+//            entries.append(ChartDataEntry(x: Double(x), y: Double(x)))
+//        }
+//
+//        let set = LineChartDataSet(entries: entries)
+//        set.colors = ChartColorTemplates.material()
+//        let data = LineChartData(dataSet: set)
+//        stocksChart.data = data
+//    }
+    
     
     //MARK: - ???
   
@@ -47,6 +92,7 @@ class ViewController: UIViewController {
         priceChangeLabel.text = "-"
         priceChangeLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         companyLogoImage.image = nil
+        lineChartView.isHidden = true
         
         guard let companies = listOfCompanies?.array,
               let index = index,
@@ -55,6 +101,7 @@ class ViewController: UIViewController {
         
         stockManager.requestQuote(for: companies[index].symbol)
         stockManager.requestImage(for: companies[index].symbol)
+        stockManager.requestChart(for: companies[index].symbol)
     }
 }
 
@@ -66,7 +113,7 @@ extension ViewController: UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return listOfCompanies?.array.count ?? 0 //companies.keys.count
+        return listOfCompanies?.array.count ?? 0
     }
 }
 
@@ -74,7 +121,7 @@ extension ViewController: UIPickerViewDataSource {
 
 extension ViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return listOfCompanies?.array[row].companyName //Array(companies.keys)[row]
+        return listOfCompanies?.array[row].companyName
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -94,16 +141,33 @@ extension ViewController: UIPickerViewDelegate {
         
         return label
     }
-//    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-//        guard let titleData = listOfCompanies?.array[row].companyName else { return nil }
-//        let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedString.Key.font:UIFont(name: "Georgia", size: 20.0)!,NSAttributedString.Key.foregroundColor:UIColor.blue])
-//        return myTitle
-//    }
 }
 
 //MARK: - StocksManagerDelegate
 
 extension ViewController: StocksManagerDelegate {
+    
+    func didUpdateChart(chart: ChartModel) {
+        
+        DispatchQueue.main.async {
+            let values = (0..<chart.array.count).map { (i) -> ChartDataEntry in
+                let val = Double(chart.array[i].close)
+                return ChartDataEntry(x: Double(i), y: val)
+            }
+            
+            let set1 = LineChartDataSet(entries: values, label: nil)
+            let data = LineChartData(dataSet: set1)
+            
+            self.lineChartView.data = data
+            self.lineChartView.isHidden = false
+        }
+       
+        
+        
+     //   print(chart.array[0].close)
+
+    }
+    
     func didUpdateImage(image: ImageModel) {
         guard let url = URL(string: image.url) else {
             return print("Can't download image")

@@ -11,6 +11,7 @@ protocol StocksManagerDelegate {
     func didUpdateStocks(stocks: StocksModel)
     func didUpdateCompanies(companies: ListOfCompaniesModel)
     func didUpdateImage(image: ImageModel)
+    func didUpdateChart(chart: ChartModel)
 }
 
 struct StockManager {
@@ -113,4 +114,41 @@ struct StockManager {
             return nil
         }
     }
+    
+    
+    func requestChart(for symbol: String) {
+        guard let urlChart = URL(string: "\(urlGeneral)\(symbol)/chart/1m?token=\(token)")
+        else {
+            return print("Can't assign ChartURL to a constant")
+        }
+        let dataTask = URLSession.shared.dataTask(with: urlChart) { (data, response, error) in
+            if let data = data,
+               (response as? HTTPURLResponse)?.statusCode == 200,
+               error == nil {
+                if let chart = self.parseChart(from: data) {
+                    self.delegate?.didUpdateChart(chart: chart)
+                }
+            } else {
+                print("Network error. Problem with url")
+            }
+        }
+        dataTask.resume()
+    }
+    
+    func parseChart(from data: Data) -> ChartModel? {
+        let decoder = JSONDecoder()
+        do {
+            let decodedData = try decoder.decode(ChartModel.self, from: data)
+            
+            return decodedData
+        } catch {
+            print("JSON parsing error:" + error.localizedDescription)
+            return nil
+        }
+    }
+    
+    
+    
+    
+    
 }
