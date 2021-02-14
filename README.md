@@ -15,6 +15,6 @@ The App allows you to see the cost of the most "active" shares on the stock exch
 - MVC
 - Pod "Charts"
 - API iexcloud.io
-- GET reques
+- GET requests
 - UIAlertController
 - UIPickerView
